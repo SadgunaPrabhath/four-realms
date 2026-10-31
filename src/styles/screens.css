@@ -1,0 +1,52 @@
+/* ============================================================
+   Meta screens (settings, achievements, codex, stats, credits)
+   + shared content styling.  Mode-specific styles appended below.
+   ============================================================ */
+.content-page { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.content-inner { max-width: 1000px; margin: 0 auto; padding: clamp(16px, 3vw, 32px); }
+.page-title { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--text-strong); margin-bottom: 4px; }
+.page-sub { color: var(--text-dim); font-family: var(--font-serif); font-style: italic; font-size: 1.1rem; margin-bottom: var(--sp-5); }
+
+/* Settings rows */
+.set-row { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); padding: 14px 0; border-bottom: 1px solid var(--hairline); }
+.set-row .set-label { font-weight: 600; color: var(--text-strong); }
+.set-row .set-desc { font-size: 0.82rem; color: var(--text-faint); }
+.set-control { flex: none; min-width: 160px; display: flex; align-items: center; gap: 10px; justify-content: flex-end; }
+.seg { display: inline-flex; border: 1px solid var(--panel-border-soft); border-radius: var(--radius); overflow: hidden; }
+.seg button { padding: 7px 14px; background: none; border: none; color: var(--text-dim); cursor: pointer; font-family: var(--font-display); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.seg button.active { background: var(--realm); color: var(--ink-900); }
+
+/* Achievement cards */
+.ach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.ach { display: flex; gap: 12px; align-items: center; padding: 14px; border-radius: var(--radius); border: 1px solid var(--panel-border-soft); background: var(--surface-2); }
+.ach.locked { opacity: 0.55; }
+.ach.done { border-color: var(--gold-700); background: linear-gradient(180deg, rgba(58,46,20,0.35), var(--surface-2)); }
+.ach-ico { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-size: 1.5rem; background: rgba(0,0,0,0.35); flex: none; }
+.ach.done .ach-ico { box-shadow: var(--glow-gold); }
+.ach-name { font-family: var(--font-display); font-size: 0.92rem; color: var(--text-strong); }
+.ach-desc { font-size: 0.8rem; color: var(--text-dim); }
+.ach-xp { font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold-400); }
+
+/* Codex */
+.codex-cat { margin-bottom: var(--sp-6); }
+.codex-entry { padding: 16px; border-radius: var(--radius); border: 1px solid var(--panel-border-soft); background: var(--surface-2); margin-bottom: 10px; }
+.codex-entry h4 { font-family: var(--font-display); color: var(--gold-300); margin-bottom: 6px; }
+.codex-entry p { font-family: var(--font-serif); font-size: 1.05rem; color: var(--text-dim); line-height: 1.6; }
+
+/* Stats grid */
+.stat-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.stat-tile { padding: 16px; border-radius: var(--radius); background: var(--surface-2); border: 1px solid var(--panel-border-soft); text-align: center; }
+.stat-tile .st-val { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--realm); }
+.stat-tile .st-lbl { font-size: 0.76rem; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
+
+/* Credits */
+.credits { text-align: center; max-width: 640px; margin: 0 auto; }
+.credits h2 { margin: var(--sp-6) 0 var(--sp-2); color: var(--gold-300); }
+.credits p { color: var(--text-dim); font-family: var(--font-serif); font-size: 1.1rem; }
+
+/* progress ring for account level */
+.xp-ring { display:flex; align-items:center; gap: 10px; }
+
+/* generic list */
+.list-row { display: flex; align-items: center; gap: 12px; padding: 12px; border-bottom: 1px solid var(--hairline); }
+.list-row:hover { background: rgba(255,255,255,0.02); }

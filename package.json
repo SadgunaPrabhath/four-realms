@@ -1,0 +1,18 @@
+{
+  "name": "the-four-realms",
+  "version": "1.0.0",
+  "description": "The Four Realms — a living world of power, mystery, survival & legend. Four games in one premium launcher.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "jsdom": "^30.0.1",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.4"
+  }
+}

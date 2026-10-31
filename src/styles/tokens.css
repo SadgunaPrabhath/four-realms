@@ -1,0 +1,96 @@
+/* ============================================================
+   THE FOUR REALMS — Design Tokens
+   A premium dark-fantasy cinematic design system.
+   ============================================================ */
+:root {
+  /* --- Core ink & parchment palette --- */
+  --ink-900: #07060a;
+  --ink-850: #0b0a0f;
+  --ink-800: #100e16;
+  --ink-750: #16131d;
+  --ink-700: #1d1926;
+  --ink-650: #262031;
+  --ink-600: #322b40;
+  --ink-500: #443b56;
+
+  --stone-400: #6b6076;
+  --stone-300: #8d8394;
+  --stone-200: #b4abba;
+  --parch-100: #e9dfc8;
+  --parch-50:  #f4ecd8;
+
+  /* --- Metallic accents --- */
+  --gold-700: #7a5a1e;
+  --gold-600: #a37b2a;
+  --gold-500: #c9a24b;
+  --gold-400: #e3c168;
+  --gold-300: #f2d98c;
+  --bronze:   #b07a45;
+  --silver:   #c8ccd6;
+  --blood-600: #6e1414;
+  --blood-500: #9b2222;
+  --blood-400: #c33636;
+
+  /* --- Realm signature colors --- */
+  --kingdom:  #c9a24b;   /* imperial gold */
+  --kingdom-glow: #e3c16855;
+  --mythos:   #ff8a3d;   /* sacred saffron/flame */
+  --mythos-glow: #ff8a3d44;
+  --crime:    #4aa3c9;   /* cold noir cyan */
+  --crime-glow: #4aa3c944;
+  --lastlife: #b5384a;   /* dying ember red */
+  --lastlife-glow: #b5384a44;
+
+  /* --- Semantic --- */
+  --success: #6fb96f;
+  --warning: #d7a53a;
+  --danger:  #cf4a4a;
+  --info:    #5b93c9;
+  --magic:   #9b6bd6;
+
+  /* --- Text --- */
+  --text: #ded4e0;
+  --text-dim: #a99fb0;
+  --text-faint: #766c80;
+  --text-strong: #f4ecd8;
+
+  /* --- Surfaces --- */
+  --surface: rgba(22, 19, 29, 0.82);
+  --surface-2: rgba(29, 25, 38, 0.9);
+  --surface-raised: rgba(38, 32, 49, 0.95);
+  --panel-border: rgba(201, 162, 75, 0.22);
+  --panel-border-soft: rgba(180, 171, 186, 0.12);
+  --hairline: rgba(233, 223, 200, 0.08);
+
+  /* --- Typography --- */
+  --font-display: 'Cinzel', 'Times New Roman', serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Spectral', Georgia, serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* --- Spacing scale --- */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px;
+
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 14px;
+
+  /* --- Shadows / glows --- */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
+  --shadow: 0 8px 30px rgba(0,0,0,0.55);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.7);
+  --glow-gold: 0 0 24px rgba(227,193,104,0.35);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --realm: var(--gold-500);
+  --realm-glow: var(--kingdom-glow);
+}
+
+/* Per-realm theming applied on <body data-realm="..."> */
+body[data-realm='kingdom']  { --realm: var(--kingdom);  --realm-glow: var(--kingdom-glow); }
+body[data-realm='mythos']   { --realm: var(--mythos);   --realm-glow: var(--mythos-glow); }
+body[data-realm='crime']    { --realm: var(--crime);    --realm-glow: var(--crime-glow); }
+body[data-realm='lastlife'] { --realm: var(--lastlife); --realm-glow: var(--lastlife-glow); }

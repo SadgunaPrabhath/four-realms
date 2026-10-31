@@ -1,0 +1,148 @@
+/* ============================================================
+   Screen & hub layouts
+   ============================================================ */
+.screen { position: relative; height: 100%; display: flex; flex-direction: column; }
+
+/* ---------- Top bar ---------- */
+.topbar {
+  display: flex; align-items: center; gap: var(--sp-3);
+  padding: 10px 16px;
+  background: linear-gradient(180deg, rgba(11,10,15,0.9), rgba(11,10,15,0.4));
+  border-bottom: 1px solid var(--hairline);
+  backdrop-filter: blur(10px);
+  flex: none; z-index: 20;
+  padding-top: max(10px, env(safe-area-inset-top));
+}
+.topbar .icon-btn { font-size: 1.5rem; line-height: 1; }
+.topbar-title { font-family: var(--font-display); font-size: 1.05rem; letter-spacing: 0.05em; color: var(--text-strong); }
+
+/* ---------- Section head ---------- */
+.section-head { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3); margin: var(--sp-4) 0 var(--sp-3); }
+.section-head h3 { font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold-400); }
+.section-head::after { content: ''; }
+
+/* ============================================================
+   HUB / Main menu
+   ============================================================ */
+.hub { height: 100%; overflow-y: auto; display: flex; flex-direction: column; }
+.hub-inner { max-width: 1200px; width: 100%; margin: 0 auto; padding: clamp(16px, 4vw, 40px); display: flex; flex-direction: column; min-height: 100%; }
+
+.hub-header { text-align: center; padding: clamp(20px, 6vh, 60px) 0 clamp(16px, 3vh, 30px); position: relative; }
+.hub-crest { font-size: clamp(2.4rem, 8vw, 4rem); filter: drop-shadow(0 0 20px rgba(227,193,104,0.4)); animation: floaty 6s ease-in-out infinite; }
+@keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.hub-title {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(2.2rem, 8vw, 5rem); letter-spacing: 0.08em;
+  background: linear-gradient(180deg, var(--parch-50), var(--gold-500) 60%, var(--gold-700));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 30px rgba(201,162,75,0.25);
+  margin: 8px 0;
+}
+.hub-tag { font-family: var(--font-serif); font-style: italic; font-size: clamp(1rem, 2.5vw, 1.4rem); color: var(--gold-300); letter-spacing: 0.08em; opacity: 0.9; }
+
+/* Portals grid */
+.portals { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: clamp(12px, 2vw, 20px); margin: clamp(16px, 4vh, 36px) 0; }
+.portal {
+  --pc: var(--gold-500);
+  position: relative; cursor: pointer; overflow: hidden;
+  min-height: clamp(180px, 26vh, 260px);
+  border-radius: var(--radius-lg); border: 1px solid var(--panel-border-soft);
+  background: linear-gradient(160deg, rgba(20,17,28,0.6), rgba(8,7,12,0.9));
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: var(--sp-5); transition: transform 0.35s var(--ease-out), border-color 0.35s, box-shadow 0.35s;
+}
+.portal::before {
+  content: ''; position: absolute; inset: 0; z-index: 0; opacity: 0.5;
+  background: radial-gradient(ellipse 90% 70% at 50% 120%, var(--pc), transparent 70%);
+  transition: opacity 0.35s;
+}
+.portal::after {
+  content: ''; position: absolute; inset: 0; z-index: 1; opacity: 0.14; pointer-events: none;
+  background-image: var(--portal-art);
+  background-size: cover; background-position: center;
+  mix-blend-mode: screen; transition: opacity 0.35s, transform 0.6s var(--ease-out);
+}
+.portal:hover { transform: translateY(-6px) scale(1.015); border-color: var(--pc); box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px -6px var(--pc); }
+.portal:hover::before { opacity: 0.85; }
+.portal:hover::after { opacity: 0.28; transform: scale(1.06); }
+.portal:active { transform: translateY(-2px) scale(1.0); }
+.portal-content { position: relative; z-index: 2; }
+.portal-ico { font-size: clamp(2rem, 5vw, 3rem); filter: drop-shadow(0 2px 10px rgba(0,0,0,0.7)); }
+.portal-name { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.2rem, 3vw, 1.7rem); letter-spacing: 0.06em; color: var(--parch-50); margin-top: 8px; }
+.portal-tag { font-family: var(--font-serif); font-style: italic; color: var(--text-dim); font-size: 0.98rem; }
+.portal-cont { position: absolute; top: 12px; right: 12px; z-index: 3; }
+
+/* Hub nav row */
+.hub-nav { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: auto; padding-top: var(--sp-5); }
+.hub-foot { text-align: center; color: var(--text-faint); font-size: 0.78rem; padding: var(--sp-4) 0; }
+
+/* Player profile strip */
+.profile-strip {
+  display: flex; align-items: center; gap: var(--sp-3); flex-wrap: wrap;
+  justify-content: center; padding: 12px 16px; margin-bottom: 8px;
+  background: var(--surface); border: 1px solid var(--panel-border-soft); border-radius: 100px;
+  max-width: 640px; align-self: center; width: 100%;
+}
+.avatar { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; font-size: 1.3rem;
+  background: radial-gradient(circle at 30% 30%, var(--gold-500), var(--gold-700)); color: var(--ink-900); flex: none; box-shadow: var(--glow-gold); }
+
+/* ============================================================
+   Generic mode body layout
+   ============================================================ */
+.mode-body { flex: 1 1 auto; overflow: hidden; display: flex; min-height: 0; }
+.mode-scroll { flex: 1; overflow-y: auto; padding: clamp(12px, 2.5vw, 24px); -webkit-overflow-scrolling: touch; }
+.mode-scroll-inner { max-width: 1180px; margin: 0 auto; }
+
+/* Resource bar (kingdom/mythos/lastlife HUD) */
+.resbar {
+  display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+  padding: 10px 16px; background: rgba(8,7,12,0.7); border-bottom: 1px solid var(--hairline);
+  flex: none; overflow-x: auto;
+}
+.resbar::-webkit-scrollbar { height: 0; }
+
+/* Two-column mode content */
+.two-col { display: grid; grid-template-columns: 1fr; gap: var(--sp-4); }
+@media (min-width: 900px) { .two-col { grid-template-columns: 1.6fr 1fr; } .two-col.even { grid-template-columns: 1fr 1fr; } }
+
+/* Bottom action bar (mobile-friendly) */
+.action-bar {
+  display: flex; gap: 8px; padding: 10px 16px; flex-wrap: wrap;
+  background: linear-gradient(0deg, rgba(8,7,12,0.95), rgba(8,7,12,0.5));
+  border-top: 1px solid var(--hairline); flex: none;
+  padding-bottom: max(10px, env(safe-area-inset-bottom));
+}
+
+/* Mode nav tabs (bottom on mobile) */
+.mode-tabs { display: flex; gap: 4px; padding: 6px 10px; background: rgba(8,7,12,0.8); border-top: 1px solid var(--hairline); overflow-x: auto; flex: none;
+  padding-bottom: max(6px, env(safe-area-inset-bottom)); }
+.mode-tab { flex: 1; min-width: 68px; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 4px; border-radius: var(--radius); cursor: pointer;
+  border: 1px solid transparent; background: none; color: var(--text-faint); transition: all 0.15s; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.mode-tab .mt-ico { font-size: 1.25rem; }
+.mode-tab.active { color: var(--realm); background: rgba(255,255,255,0.04); border-color: var(--panel-border-soft); }
+.mode-tab:hover { color: var(--text); }
+
+/* Big cinematic panels */
+.cinematic { text-align: center; padding: clamp(24px, 6vh, 64px) 20px; }
+.cinematic h1 { margin-bottom: 12px; }
+.big-num { font-family: var(--font-display); font-weight: 900; font-size: clamp(2rem, 8vw, 3.5rem); color: var(--realm); }
+
+/* Save slot */
+.slot { display: flex; align-items: center; gap: 12px; padding: 14px; }
+.slot-badge { width: 46px; height: 46px; border-radius: var(--radius); display: grid; place-items: center; font-size: 1.5rem; background: rgba(0,0,0,0.35); border: 1px solid var(--hairline); flex: none; }
+
+/* Responsive tweaks */
+@media (max-width: 720px) {
+  .portals { grid-template-columns: 1fr 1fr; }
+  .portal { min-height: 150px; padding: var(--sp-4); }
+  .portal-name { font-size: 1.1rem; }
+  .portal-tag { display: none; }
+}
+@media (max-width: 420px) {
+  .portals { grid-template-columns: 1fr; }
+  .portal { min-height: 120px; }
+}
+
+html { font-size: calc(16px * var(--font-scale, 1)); }
+body.reduce-motion .hub-crest { animation: none; }
+body.no-particles #fx-layer { display: none; }
